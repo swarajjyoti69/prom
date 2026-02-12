@@ -180,7 +180,7 @@ button:hover {
 <div class="card">
 <h2>Processing Your Responses...</h2>
 <p>Please wait while we evaluate compatibility.</p>
-<h3 id="countdown">3</h3>
+<h3 id="countdown">6</h3>
 </div>
 </div>
 
@@ -229,8 +229,10 @@ function showPage(id){
 function startReveal(){
     showPage("loadingPage");
 
-    let timeLeft = 3;
+    let timeLeft = 6;
     let countdown = document.getElementById("countdown");
+
+    countdown.innerText = 6;
 
     let timer = setInterval(function(){
         timeLeft--;
@@ -239,18 +241,19 @@ function startReveal(){
         if(timeLeft <= 0){
             clearInterval(timer);
             showPage("finalRevealPage");
+
+            // STRONGER METHOD: play music immediately when reveal appears
+            let music = document.getElementById("bgMusic");
+            music.volume = 0.8;
+            music.play().catch(()=>{});
         }
     },1000);
 }
 
 function celebrate(){
-    document.getElementById("bgMusic").play();
-
     for(let i=0;i<30;i++){
         createFloating();
     }
-
-    alert("Best Decision Ever 💖");
 }
 
 function createFloating(){
