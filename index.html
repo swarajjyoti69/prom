@@ -1,73 +1,132 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Prom?</title>
+<title>Research Opportunities Portal</title>
 <style>
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        background: #f4f6f9;
         text-align: center;
+    }
+
+    .page {
+        display: none;
+        padding: 40px;
+    }
+
+    .active {
+        display: block;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        border-radius: 6px;
+        background: #2c3e50;
+        color: white;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #34495e;
     }
 
     .card {
         background: white;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        max-width: 600px;
+        margin: auto;
     }
 
-    h1 {
-        color: #ff4e8d;
-    }
-
-    button {
-        padding: 12px 25px;
+    input {
+        padding: 8px;
         margin: 10px;
-        border: none;
-        border-radius: 30px;
-        font-size: 16px;
-        cursor: pointer;
-        background-color: #ff4e8d;
-        color: white;
-        transition: 0.3s;
+        width: 80%;
     }
 
-    button:hover {
-        background-color: #ff1f6a;
-    }
-
-    #result {
-        margin-top: 20px;
-        font-size: 20px;
-        color: #ff4e8d;
-        display: none;
+    img {
+        width: 200px;
+        margin: 10px;
+        border-radius: 10px;
     }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-    <h1>Divya, Will You Go To Prom With Me? 💖</h1>
+<!-- PAGE 1: FAKE INTERNSHIP HOME -->
+<div id="page1" class="page active">
+    <div class="card">
+        <h2>Global Undergraduate Research & Internship Portal</h2>
+        <p>Explore funded internships and research opportunities across multiple disciplines.</p>
 
-    <button onclick="answer()">A. Yes 💕</button>
-    <button onclick="answer()">B. A</button>
-    <button onclick="answer()">C. B</button>
-    <button onclick="answer()">D. C</button>
+        <img src="https://images.unsplash.com/photo-1581091870627-3a84d4b3f2b0" />
+        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d" />
 
-    <div id="result">
-        YAYYY!!! 💃🕺 You just chose YES 😍
+        <h3>Select Your Field of Interest:</h3>
+
+        <button onclick="nextPage(2)">Biology</button>
+        <button onclick="nextPage(2)">Chemistry</button>
+        <button onclick="nextPage(2)">Mathematics</button>
+        <button onclick="nextPage(2)">Physics</button>
+        <button onclick="nextPage(2)">Data Science</button>
+    </div>
+</div>
+
+<!-- PAGE 2: STREAM QUESTIONS -->
+<div id="page2" class="page">
+    <div class="card">
+        <h2>Before Selecting Your Stream</h2>
+        <p>We need to understand your academic interests.</p>
+
+        <p>Are you passionate about innovation?</p>
+        <p>Do you enjoy problem solving?</p>
+        <p>Are you ready for advanced learning opportunities?</p>
+
+        <button onclick="nextPage(3)">Yes</button>
+    </div>
+</div>
+
+<!-- PAGE 3: HUMAN VERIFICATION -->
+<div id="page3" class="page">
+    <div class="card">
+        <h2>Human Verification Required</h2>
+        <p>Please confirm you are not a robot.</p>
+
+        <button onclick="nextPage(4)">I am Human</button>
+    </div>
+</div>
+
+<!-- PAGE 4: PERSONAL QUESTIONS -->
+<div id="page4" class="page">
+    <div class="card">
+        <h2>Applicant Questionnaire</h2>
+
+        <p>How was your Valentine's week?</p>
+        <input type="text">
+
+        <p>Are you in a relationship?</p>
+        <input type="text">
+
+        <p>When is your birthday?</p>
+        <input type="date">
+
+        <br><br>
+        <button onclick="alert('Processing responses...')">Submit</button>
     </div>
 </div>
 
 <script>
-function answer() {
-    document.getElementById("result").style.display = "block";
+function nextPage(pageNumber) {
+    var pages = document.getElementsByClassName("page");
+    for (var i = 0; i < pages.length; i++) {
+        pages[i].classList.remove("active");
+    }
+    document.getElementById("page" + pageNumber).classList.add("active");
 }
 </script>
 
