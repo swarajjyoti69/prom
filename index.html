@@ -63,67 +63,89 @@ img {
 <div class="card">
 <h2>Select Your Primary Field of Academic Interest</h2>
 
-<button onclick="nextPage(3)">Biotechnology</button>
+<button onclick="nextPage(3)">Biology</button>
 <button onclick="nextPage(3)">Chemistry</button>
 <button onclick="nextPage(3)">Mathematics</button>
 <button onclick="nextPage(3)">Physics</button>
 <button onclick="nextPage(3)">Data Science</button>
 </div>
 </div>
-
-<!-- PAGE 3 -->
+    
+    <!-- PAGE 3 - FIELD SELECTION -->
 <div id="page3" class="page">
 <div class="card">
-<h2>Do you enjoy solving complex real-world problems?</h2>
+<h2>Are you open to participating in exclusive academic events this semester?</h2>
 
-<button onclick="nextPage(4)">Strongly Agree</button>
-<button onclick="nextPage(4)">Agree</button>
-<button onclick="nextPage(4)">Neutral</button>
-<button onclick="nextPage(4)">Disagree</button>
+<button onclick="nextPage(4)">Yes</button>
+<button onclick="nextPage(4)">Maybe</button>
+<button onclick="nextPage(4)">Depends on the event</button>
 </div>
 </div>
 
+    
 <!-- PAGE 4 -->
 <div id="page4" class="page">
 <div class="card">
-<h2>What are your plans for 14th February?</h2>
+<h2>Do you enjoy solving complex real-world problems?</h2>
 
-<button onclick="saveAnswer('14Feb','Busy',5)">Busy</button>
-<button onclick="saveAnswer('14Feb','Friends',5)">Doing things with friends</button>
-<button onclick="saveAnswer('14Feb','Playing',5)">Playing</button>
-<button onclick="saveAnswer('14Feb','Trip',5)">Going out on a trip</button>
+<button onclick="nextPage(5)">Yes I want to</button>
+<button onclick="nextPage(5)">No I don't want to</button>
+<button onclick="nextPage(5)">Depends</button>
+<button onclick="nextPage(5)">Not thought</button>
 </div>
 </div>
 
-<!-- PAGE 5 -->
+    <!-- PAGE 5 -->
 <div id="page5" class="page">
 <div class="card">
-<h2>Do you know who Swaraj is?</h2>
-
-<button onclick="saveAnswer('KnowSwaraj','Yes',6)">Yes</button>
-<button onclick="saveAnswer('KnowSwaraj','No',6)">No</button>
+<h2>Are you currently in a committed relationship?</h2>
+<button onclick="nextPage(6)">Yes</button>
+<button onclick="nextPage(6)">No</button>
+<button onclick="nextPage(6)">It's complicated</button>
 </div>
 </div>
 
 <!-- PAGE 6 -->
 <div id="page6" class="page">
 <div class="card">
-<h2>What do you think about him?</h2>
+<h2>What are your plans for 14th February?</h2>
 
-<button onclick="saveAnswer('Opinion','Very Good',7)">Very Good</button>
-<button onclick="saveAnswer('Opinion','Good',7)">Good</button>
-<button onclick="saveAnswer('Opinion','Average',7)">Average</button>
-<button onclick="saveAnswer('Opinion','Bad',7)">Bad</button>
+<button onclick="saveAnswer('14Feb','Busy',7)">Eating</button>
+<button onclick="saveAnswer('14Feb','Friends',7)">Doing things with friends</button>
+<button onclick="saveAnswer('14Feb','Playing',7)">Sleeping</button>
+<button onclick="saveAnswer('14Feb','Trip',7)">Going out on a trip</button>
 </div>
 </div>
 
 <!-- PAGE 7 -->
 <div id="page7" class="page">
 <div class="card">
+<h2>Do you know who Swaraj is?</h2>
+
+<button onclick="saveAnswer('KnowSwaraj','Yes',8)">Yes</button>
+<button onclick="saveAnswer('KnowSwaraj','No',8)">No</button>
+</div>
+</div>
+
+<!-- PAGE 8 -->
+<div id="page8" class="page">
+<div class="card">
+<h2>What do you think about him?</h2>
+
+<button onclick="saveAnswer('Opinion','Very Good',9)">Very Good</button>
+<button onclick="saveAnswer('Opinion','Good',9)">Good</button>
+</div>
+</div>
+
+<!-- PAGE 9 -->
+<div id="page9" class="page">
+<div class="card">
 <h2>Do you want him back in your life?</h2>
 
-<button onclick="yesPath()">Yes</button>
-<button onclick="noPath()">No</button>
+<button onclick="answer()">A. Yes 💕</button>
+<button onclick="answer()">B. A</button>
+    <button onclick="answer()">C. B</button>
+      <button onclick="answer()">D. C</button>
 </div>
 </div>
 
