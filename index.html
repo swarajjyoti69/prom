@@ -45,6 +45,11 @@ button:hover {
     background: white;
     color: #141e30;
 }
+    .fadeOut {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
 
 /* Romantic Background */
 .romantic-bg {
@@ -314,24 +319,30 @@ function celebrate(){
     // Glow effect
     document.body.style.boxShadow = "inset 0 0 300px #ff4d88";
 
-    // Shake only the card (not whole body)
+    // Get proposal card
     const revealCard = document.querySelector("#finalRevealPage .card");
-    revealCard.classList.add("shakeEffect");
 
+    // Fade it out
+    revealCard.classList.add("fadeOut");
+
+    // After fade, show name big
     setTimeout(()=>{
-        revealCard.classList.remove("shakeEffect");
-    },500);
 
-    // Create floating elements (reduced slightly to avoid lag)
-    for(let i=0;i<50;i++){
-        createFloating();
-    }
+        // Hide card completely
+        revealCard.style.display = "none";
 
-    createConfetti();
-    createFireworks();
+        let name = document.getElementById("nameReveal");
+        name.style.opacity = "1";
 
-    let name = document.getElementById("nameReveal");
-    name.style.opacity = "1";
+        // Effects
+        for(let i=0;i<50;i++){
+            createFloating();
+        }
+
+        createConfetti();
+        createFireworks();
+
+    },800);
 }
 
 
