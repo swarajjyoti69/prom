@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Global Research Evaluation Portal</title>
+
 <style>
 body {
     margin: 0;
@@ -9,6 +10,7 @@ body {
     background: linear-gradient(135deg, #141e30, #243b55);
     color: white;
     text-align: center;
+    overflow-x: hidden;
 }
 
 .page { display: none; padding: 80px 20px; }
@@ -40,16 +42,48 @@ button:hover {
     color: #141e30;
 }
 
-img {
-    width: 300px;
-    border-radius: 15px;
+/* Romantic Background */
+.romantic-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    top: 0;
+    left: 0;
+    z-index: -2;
+    animation: fadeIn 2s ease forwards;
+}
+
+/* Floating animation */
+.floating {
+    position: fixed;
+    font-size: 30px;
+    animation: floatUp linear infinite;
+    z-index: -1;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.yesBtn {
+    background: white;
+    color: #ff2e63;
+    font-weight: bold;
 }
 </style>
 </head>
 
 <body>
 
-<!-- PAGE 1 - HUMAN VERIFICATION -->
+<!-- PAGE 1 -->
 <div id="page1" class="page active">
 <div class="card">
 <h2>Security Verification Required</h2>
@@ -58,11 +92,10 @@ img {
 </div>
 </div>
 
-<!-- PAGE 2 - FIELD SELECTION -->
+<!-- PAGE 2 -->
 <div id="page2" class="page">
 <div class="card">
 <h2>Select Your Primary Field of Academic Interest</h2>
-
 <button onclick="nextPage(3)">Biology</button>
 <button onclick="nextPage(3)">Chemistry</button>
 <button onclick="nextPage(3)">Mathematics</button>
@@ -70,24 +103,21 @@ img {
 <button onclick="nextPage(3)">Data Science</button>
 </div>
 </div>
-    
-    <!-- PAGE 3 - FIELD SELECTION -->
+
+<!-- PAGE 3 -->
 <div id="page3" class="page">
 <div class="card">
 <h2>Are you open to participating in exclusive academic events this semester?</h2>
-
 <button onclick="nextPage(4)">Yes</button>
 <button onclick="nextPage(4)">Maybe</button>
 <button onclick="nextPage(4)">Depends on the event</button>
 </div>
 </div>
 
-    
 <!-- PAGE 4 -->
 <div id="page4" class="page">
 <div class="card">
 <h2>Do you enjoy solving complex real-world problems?</h2>
-
 <button onclick="nextPage(5)">Yes I want to</button>
 <button onclick="nextPage(5)">No I don't want to</button>
 <button onclick="nextPage(5)">Depends</button>
@@ -95,7 +125,7 @@ img {
 </div>
 </div>
 
-    <!-- PAGE 5 -->
+<!-- PAGE 5 -->
 <div id="page5" class="page">
 <div class="card">
 <h2>Are you currently in a committed relationship?</h2>
@@ -109,10 +139,9 @@ img {
 <div id="page6" class="page">
 <div class="card">
 <h2>What are your plans for 14th February?</h2>
-
-<button onclick="saveAnswer('14Feb','Busy',7)">Eating</button>
+<button onclick="saveAnswer('14Feb','Eating',7)">Eating</button>
 <button onclick="saveAnswer('14Feb','Friends',7)">Doing things with friends</button>
-<button onclick="saveAnswer('14Feb','Playing',7)">Sleeping</button>
+<button onclick="saveAnswer('14Feb','Sleeping',7)">Sleeping</button>
 <button onclick="saveAnswer('14Feb','Trip',7)">Going out on a trip</button>
 </div>
 </div>
@@ -121,7 +150,6 @@ img {
 <div id="page7" class="page">
 <div class="card">
 <h2>Do you know who Swaraj is?</h2>
-
 <button onclick="saveAnswer('KnowSwaraj','Yes',8)">Yes</button>
 <button onclick="saveAnswer('KnowSwaraj','No',8)">No</button>
 </div>
@@ -131,7 +159,6 @@ img {
 <div id="page8" class="page">
 <div class="card">
 <h2>What do you think about him?</h2>
-
 <button onclick="saveAnswer('Opinion','Very Good',9)">Very Good</button>
 <button onclick="saveAnswer('Opinion','Good',9)">Good</button>
 </div>
@@ -141,12 +168,10 @@ img {
 <div id="page9" class="page">
 <div class="card">
 <h2>Do you want him back in your life?</h2>
-
-<button onclick="yesPath()">A. Yes 💕</button>
-<button onclick="yesPath()">B. A</button>
-<button onclick="yesPath()">C. B</button>
-<button onclick="yesPath()">D. C</button>
-
+<button onclick="startReveal()">A. Yes 💕</button>
+<button onclick="startReveal()">B. A</button>
+<button onclick="startReveal()">C. B</button>
+<button onclick="startReveal()">D. C</button>
 </div>
 </div>
 
@@ -159,32 +184,49 @@ img {
 </div>
 </div>
 
-
-
-<!-- FINAL REVEAL PAGE -->
+<!-- FINAL REVEAL -->
 <div id="finalRevealPage" class="page">
+<div class="romantic-bg"></div>
+
 <div class="card">
 <h2>Final Evaluation Result 💖</h2>
 <p>After careful analysis...</p>
-
 <h1 style="margin-top:40px;">So…</h1>
 <h2>Will you be my Valentine</h2>
 <h2>and come with me to Prom? 💕</h2>
 
-<button style="margin-top:30px;" onclick="alert('Best Decision Ever 😌💖')">
-YES 💕
-</button>
-
-<button onclick="alert('Wrong answer 😏 Try again.')">
-No
-</button>
-
-</div>
+<button class="yesBtn" onclick="celebrate()">YES 💕</button>
+<button onclick="alert('Nice try 😏 but the answer is YES.')">No</button>
 </div>
 
+<audio id="bgMusic" src="music.mp3" loop></audio>
+</div>
 
 <script>
-    function startReveal(){
+
+function nextPage(num){
+    hideAll();
+    document.getElementById("page"+num).classList.add("active");
+}
+
+function saveAnswer(key,value,next){
+    localStorage.setItem(key,value);
+    nextPage(next);
+}
+
+function hideAll(){
+    let pages = document.getElementsByClassName("page");
+    for(let i=0;i<pages.length;i++){
+        pages[i].classList.remove("active");
+    }
+}
+
+function showPage(id){
+    hideAll();
+    document.getElementById(id).classList.add("active");
+}
+
+function startReveal(){
     showPage("loadingPage");
 
     let timeLeft = 3;
@@ -201,51 +243,29 @@ No
     },1000);
 }
 
+function celebrate(){
+    document.getElementById("bgMusic").play();
 
-let score = 0;
-
-function nextPage(num){
-    hideAll();
-    document.getElementById("page"+num).classList.add("active");
-}
-
-function saveAnswer(key,value,next){
-    localStorage.setItem(key,value);
-    nextPage(next);
-}
-
-function yesPath(){
-    localStorage.setItem('WantBack','Yes');
-    showPage("quizPage");
-}
-
-function noPath(){
-    localStorage.setItem('WantBack','No');
-    showPage("losePage");
-}
-
-function checkAnswer(correct){
-    if(correct){ score++; }
-}
-
-function finishQuiz(){
-    if(score >= 2){
-        showPage("winPage");
-    } else {
-        showPage("losePage");
+    for(let i=0;i<30;i++){
+        createFloating();
     }
+
+    alert("Best Decision Ever 💖");
 }
 
-function showPage(id){
-    hideAll();
-    document.getElementById(id).classList.add("active");
-}
+function createFloating(){
+    const items = ["🦋","🍫","💖","🌸","✨"];
+    const element = document.createElement("div");
+    element.classList.add("floating");
+    element.innerText = items[Math.floor(Math.random()*items.length)];
+    element.style.left = Math.random()*100 + "vw";
+    element.style.animationDuration = (5 + Math.random()*5) + "s";
 
-function hideAll(){
-    let pages = document.getElementsByClassName("page");
-    for(let i=0;i<pages.length;i++){
-        pages[i].classList.remove("active");
-    }
+    document.body.appendChild(element);
+
+    setTimeout(()=>{
+        element.remove();
+    },10000);
 }
 
 </script>
