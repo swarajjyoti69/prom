@@ -53,6 +53,58 @@ button:hover {
     z-index: -2;
     animation: fadeIn 2s ease forwards;
 }
+    /* Screen Shake */
+@keyframes shake {
+    0% { transform: translate(0px, 0px); }
+    25% { transform: translate(5px, -5px); }
+    50% { transform: translate(-5px, 5px); }
+    75% { transform: translate(5px, 5px); }
+    100% { transform: translate(0px, 0px); }
+}
+
+/* Big Name Reveal */
+#nameReveal {
+    position: fixed;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 20px #ff4d88, 0 0 40px #ff99cc;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    z-index: 9999;
+    animation: confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall {
+    0% { transform: translateY(-10vh) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(720deg); }
+}
+
+/* Pulse YES button */
+.yesBtn {
+    background: white;
+    color: #ff2e63;
+    font-weight: bold;
+    animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 0, 100, 0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(255, 0, 100, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 0, 100, 0); }
+}
+
 
 /* Strong Floating Animation */
 .floating {
@@ -201,6 +253,8 @@ button:hover {
 </div>
 
 <audio id="bgMusic" src="music.mp3" loop></audio>
+    <div id="nameReveal">DIVYA 💖 SWARAJ</div>
+
 </div>
 
 <script>
@@ -253,16 +307,29 @@ function startReveal(){
 
 function celebrate(){
 
-    // Screen glow effect
-    document.body.style.transition = "0.5s";
-    document.body.style.boxShadow = "inset 0 0 200px #ff4d88";
+    // Screen glow
+    document.body.style.boxShadow = "inset 0 0 300px #ff4d88";
 
-    // Create MANY floating elements
-    for(let i=0;i<70;i++){
+    // Screen shake
+    document.body.style.animation = "shake 0.5s";
+    setTimeout(()=>{ document.body.style.animation = ""; },500);
+
+    // Big floating elements
+    for(let i=0;i<80;i++){
         createFloating();
     }
 
+    // Confetti burst
+    createConfetti();
+
+    // Fireworks
+    createFireworks();
+
+    // Show name
+    let name = document.getElementById("nameReveal");
+    name.style.opacity = "1";
 }
+
 
 function createFloating(){
     const items = ["🦋","🍫","💖","🌸","✨","💘","🌹"];
@@ -281,6 +348,34 @@ function createFloating(){
         element.remove();
     },7000);
 }
+    function createConfetti(){
+    for(let i=0;i<120;i++){
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random()*100 + "vw";
+        confetti.style.backgroundColor =
+            `hsl(${Math.random()*360}, 100%, 50%)`;
+        document.body.appendChild(confetti);
+
+        setTimeout(()=>{ confetti.remove(); },3000);
+    }
+}
+
+function createFireworks(){
+    for(let i=0;i<30;i++){
+        const fire = document.createElement("div");
+        fire.innerText = "✨";
+        fire.style.position = "fixed";
+        fire.style.fontSize = "40px";
+        fire.style.left = Math.random()*100 + "vw";
+        fire.style.top = Math.random()*50 + "vh";
+        fire.style.zIndex = "9999";
+        document.body.appendChild(fire);
+
+        setTimeout(()=>{ fire.remove(); },1500);
+    }
+}
+
 
 
 </script>
