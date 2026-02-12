@@ -1,122 +1,146 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Research Opportunities Portal</title>
+<title>Global Research Fellowship Portal</title>
 <style>
     body {
         margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f4f6f9;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #141e30, #243b55);
+        color: #f1f1f1;
         text-align: center;
     }
 
     .page {
         display: none;
-        padding: 40px;
+        padding: 60px 20px;
     }
 
     .active {
         display: block;
     }
 
+    .card {
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 15px;
+        max-width: 700px;
+        margin: auto;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
     button {
-        padding: 10px 20px;
+        padding: 12px 25px;
         margin: 10px;
-        border: none;
-        border-radius: 6px;
-        background: #2c3e50;
+        border-radius: 30px;
+        border: 1px solid rgba(255,255,255,0.3);
+        background: transparent;
         color: white;
         cursor: pointer;
+        transition: 0.3s;
+        font-size: 15px;
     }
 
     button:hover {
-        background: #34495e;
-    }
-
-    .card {
         background: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        max-width: 600px;
-        margin: auto;
+        color: #141e30;
     }
 
-    input {
-        padding: 8px;
+    input, select {
+        padding: 10px;
         margin: 10px;
         width: 80%;
+        border-radius: 8px;
+        border: none;
     }
 
-    img {
+    .options button {
         width: 200px;
-        margin: 10px;
-        border-radius: 10px;
     }
+
 </style>
 </head>
 
 <body>
+    <!-- PAGE 1 -->
+<div id="page3" class="page">
+    <div class="card">
+        <h2>Security Verification</h2>
+        <p>This portal requires human verification.</p>
 
-<!-- PAGE 1: FAKE INTERNSHIP HOME -->
+        <button onclick="nextPage(4)">Verify Identity</button>
+    </div>
+</div>
+
+
+<!-- PAGE 2 -->
 <div id="page1" class="page active">
     <div class="card">
-        <h2>Global Undergraduate Research & Internship Portal</h2>
-        <p>Explore funded internships and research opportunities across multiple disciplines.</p>
-
-        <img src="https://images.unsplash.com/photo-1581091870627-3a84d4b3f2b0" />
-        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d" />
+        <h2>Global Undergraduate Research Fellowship</h2>
+        <p>Explore elite internship & funded research programs worldwide.</p>
 
         <h3>Select Your Field of Interest:</h3>
 
-        <button onclick="nextPage(2)">Biology</button>
-        <button onclick="nextPage(2)">Chemistry</button>
-        <button onclick="nextPage(2)">Mathematics</button>
-        <button onclick="nextPage(2)">Physics</button>
-        <button onclick="nextPage(2)">Data Science</button>
+        <div class="options">
+            <button onclick="nextPage(2)">Biology</button>
+            <button onclick="nextPage(2)">Chemistry</button>
+            <button onclick="nextPage(2)">Mathematics</button>
+            <button onclick="nextPage(2)">Physics</button>
+            <button onclick="nextPage(2)">Data Science</button>
+        </div>
     </div>
 </div>
 
-<!-- PAGE 2: STREAM QUESTIONS -->
+<!-- PAGE 3 -->
 <div id="page2" class="page">
     <div class="card">
-        <h2>Before Selecting Your Stream</h2>
-        <p>We need to understand your academic interests.</p>
+        <h2>Pre-Screening Questionnaire</h2>
+        <p>Before confirming your academic track, please answer:</p>
 
-        <p>Are you passionate about innovation?</p>
-        <p>Do you enjoy problem solving?</p>
-        <p>Are you ready for advanced learning opportunities?</p>
+        <p>Do you enjoy working on long-term innovative projects?</p>
+        <p>Are you comfortable collaborating with peers?</p>
+        <p>Do you aspire to achieve something memorable this year?</p>
 
-        <button onclick="nextPage(3)">Yes</button>
+        <button onclick="nextPage(3)">Proceed</button>
     </div>
 </div>
 
-<!-- PAGE 3: HUMAN VERIFICATION -->
-<div id="page3" class="page">
-    <div class="card">
-        <h2>Human Verification Required</h2>
-        <p>Please confirm you are not a robot.</p>
 
-        <button onclick="nextPage(4)">I am Human</button>
-    </div>
-</div>
-
-<!-- PAGE 4: PERSONAL QUESTIONS -->
+<!-- PAGE 4 -->
 <div id="page4" class="page">
     <div class="card">
-        <h2>Applicant Questionnaire</h2>
+        <h2>Applicant Compatibility Form</h2>
 
         <p>How was your Valentine's week?</p>
-        <input type="text">
+        <select>
+            <option>It was amazing</option>
+            <option>It was normal</option>
+            <option>Could have been better</option>
+        </select>
 
-        <p>Are you in a relationship?</p>
-        <input type="text">
+        <p>Are you currently in a committed relationship?</p>
+        <select>
+            <option>Yes</option>
+            <option>No</option>
+            
+        </select>
 
-        <p>When is your birthday?</p>
-        <input type="date">
+        <p>Would you be open to a memorable evening event this semester?</p>
+        <select>
+            <option>Yes</option>
+            <option>Possibly</option>
+            
+        </select>
 
         <br><br>
-        <button onclick="alert('Processing responses...')">Submit</button>
+        <button onclick="alert('Responses recorded. Proceeding to final evaluation...')">
+            Submit Responses
+        </button>
     </div>
 </div>
 
