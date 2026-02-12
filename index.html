@@ -13,7 +13,7 @@
 
     .page {
         display: none;
-        padding: 60px 20px;
+        padding: 80px 20px;
     }
 
     .active {
@@ -23,7 +23,7 @@
     .card {
         background: rgba(255,255,255,0.05);
         backdrop-filter: blur(10px);
-        padding: 40px;
+        padding: 50px;
         border-radius: 15px;
         max-width: 700px;
         margin: auto;
@@ -31,12 +31,12 @@
     }
 
     h2 {
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     button {
-        padding: 12px 25px;
-        margin: 10px;
+        padding: 12px 30px;
+        margin: 12px;
         border-radius: 30px;
         border: 1px solid rgba(255,255,255,0.3);
         background: transparent;
@@ -44,102 +44,84 @@
         cursor: pointer;
         transition: 0.3s;
         font-size: 15px;
+        min-width: 220px;
     }
 
     button:hover {
         background: white;
         color: #141e30;
     }
-
-    input, select {
-        padding: 10px;
-        margin: 10px;
-        width: 80%;
-        border-radius: 8px;
-        border: none;
-    }
-
-    .options button {
-        width: 200px;
-    }
-
 </style>
 </head>
 
 <body>
-    <!-- PAGE 1 -->
-<div id="page3" class="page">
-    <div class="card">
-        <h2>Security Verification</h2>
-        <p>This portal requires human verification.</p>
 
-        <button onclick="nextPage(4)">Verify Identity</button>
+<!-- PAGE 1 -->
+<div id="page1" class="page active">
+    <div class="card">
+        <h2>Select Your Primary Field of Academic Interest</h2>
+
+        <button onclick="nextPage(2)">Biology</button>
+        <button onclick="nextPage(2)">Chemistry</button>
+        <button onclick="nextPage(2)">Mathematics</button>
+        <button onclick="nextPage(2)">Physics</button>
+        <button onclick="nextPage(2)">Data Science</button>
     </div>
 </div>
 
-
 <!-- PAGE 2 -->
-<div id="page1" class="page active">
+<div id="page2" class="page">
     <div class="card">
-        <h2>Global Undergraduate Research Fellowship</h2>
-        <p>Explore elite internship & funded research programs worldwide.</p>
+        <h2>Do you enjoy solving complex real-world problems?</h2>
 
-        <h3>Select Your Field of Interest:</h3>
-
-        <div class="options">
-            <button onclick="nextPage(2)">Biology</button>
-            <button onclick="nextPage(2)">Chemistry</button>
-            <button onclick="nextPage(2)">Mathematics</button>
-            <button onclick="nextPage(2)">Physics</button>
-            <button onclick="nextPage(2)">Data Science</button>
-        </div>
+        <button onclick="nextPage(3)">Strongly Agree</button>
+        <button onclick="nextPage(3)">Agree</button>
+        <button onclick="nextPage(3)">Neutral</button>
+        <button onclick="nextPage(3)">Disagree</button>
     </div>
 </div>
 
 <!-- PAGE 3 -->
-<div id="page2" class="page">
+<div id="page3" class="page">
     <div class="card">
-        <h2>Pre-Screening Questionnaire</h2>
-        <p>Before confirming your academic track, please answer:</p>
+        <h2>Are you open to participating in exclusive academic events this semester?</h2>
 
-        <p>Do you enjoy working on long-term innovative projects?</p>
-        <p>Are you comfortable collaborating with peers?</p>
-        <p>Do you aspire to achieve something memorable this year?</p>
-
-        <button onclick="nextPage(3)">Proceed</button>
+        <button onclick="nextPage(4)">Yes</button>
+        <button onclick="nextPage(4)">Maybe</button>
+        <button onclick="nextPage(4)">Depends on the event</button>
     </div>
 </div>
-
 
 <!-- PAGE 4 -->
 <div id="page4" class="page">
     <div class="card">
-        <h2>Applicant Compatibility Form</h2>
+        <h2>How was your Valentine’s week?</h2>
 
-        <p>How was your Valentine's week?</p>
-        <select>
-            <option>It was amazing</option>
-            <option>It was normal</option>
-            <option>Could have been better</option>
-        </select>
+        <button onclick="nextPage(5)">Amazing</button>
+        <button onclick="nextPage(5)">Pretty Good</button>
+        <button onclick="nextPage(5)">It was normal</button>
+        <button onclick="nextPage(5)">Could have been better</button>
+    </div>
+</div>
 
-        <p>Are you currently in a committed relationship?</p>
-        <select>
-            <option>Yes</option>
-            <option>No</option>
-            
-        </select>
+<!-- PAGE 5 -->
+<div id="page5" class="page">
+    <div class="card">
+        <h2>Are you currently in a committed relationship?</h2>
 
-        <p>Would you be open to a memorable evening event this semester?</p>
-        <select>
-            <option>Yes</option>
-            <option>Possibly</option>
-            
-        </select>
+        <button onclick="nextPage(6)">Yes</button>
+        <button onclick="nextPage(6)">No</button>
+        <button onclick="nextPage(6)">It's complicated</button>
+    </div>
+</div>
 
-        <br><br>
-        <button onclick="alert('Responses recorded. Proceeding to final evaluation...')">
-            Submit Responses
+<!-- PAGE 6 -->
+<div id="page6" class="page">
+    <div class="card">
+        <h2>Human Verification Required</h2>
+
+        <button onclick="alert('Verification successful. Proceeding to evaluation stage...')">
+            I Confirm I Am Human
         </button>
     </div>
 </div>
