@@ -36,6 +36,10 @@ button {
     transition: 0.3s;
     min-width: 200px;
 }
+    .shakeEffect {
+    animation: shake 0.5s;
+}
+
 
 button:hover {
     background: white;
@@ -307,25 +311,25 @@ function startReveal(){
 
 function celebrate(){
 
-    // Screen glow
+    // Glow effect
     document.body.style.boxShadow = "inset 0 0 300px #ff4d88";
 
-    // Screen shake
-    document.body.style.animation = "shake 0.5s";
-    setTimeout(()=>{ document.body.style.animation = ""; },500);
+    // Shake only the card (not whole body)
+    const revealCard = document.querySelector("#finalRevealPage .card");
+    revealCard.classList.add("shakeEffect");
 
-    // Big floating elements
-    for(let i=0;i<80;i++){
+    setTimeout(()=>{
+        revealCard.classList.remove("shakeEffect");
+    },500);
+
+    // Create floating elements (reduced slightly to avoid lag)
+    for(let i=0;i<50;i++){
         createFloating();
     }
 
-    // Confetti burst
     createConfetti();
-
-    // Fireworks
     createFireworks();
 
-    // Show name
     let name = document.getElementById("nameReveal");
     name.style.opacity = "1";
 }
