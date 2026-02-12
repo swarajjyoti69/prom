@@ -1,139 +1,199 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Global Research Fellowship Portal</title>
+<title>Research Evaluation Portal</title>
 <style>
     body {
         margin: 0;
         font-family: 'Segoe UI', sans-serif;
         background: linear-gradient(135deg, #141e30, #243b55);
-        color: #f1f1f1;
+        color: white;
         text-align: center;
     }
 
-    .page {
-        display: none;
-        padding: 80px 20px;
-    }
-
-    .active {
-        display: block;
-    }
+    .page { display: none; padding: 80px 20px; }
+    .active { display: block; }
 
     .card {
         background: rgba(255,255,255,0.05);
-        backdrop-filter: blur(10px);
         padding: 50px;
         border-radius: 15px;
-        max-width: 700px;
+        max-width: 750px;
         margin: auto;
         box-shadow: 0 8px 25px rgba(0,0,0,0.5);
     }
 
-    h2 {
-        margin-bottom: 30px;
-    }
-
     button {
-        padding: 12px 30px;
-        margin: 12px;
+        padding: 12px 25px;
+        margin: 10px;
         border-radius: 30px;
         border: 1px solid rgba(255,255,255,0.3);
         background: transparent;
         color: white;
         cursor: pointer;
         transition: 0.3s;
-        font-size: 15px;
-        min-width: 220px;
+        min-width: 200px;
     }
 
     button:hover {
         background: white;
         color: #141e30;
     }
+
+    img { width: 300px; border-radius: 15px; }
 </style>
 </head>
 
 <body>
 
-<!-- PAGE 1 -->
+<!-- Q1 -->
 <div id="page1" class="page active">
-    <div class="card">
-        <h2>Select Your Primary Field of Academic Interest</h2>
+<div class="card">
+<h2>What are your plans for 14th February?</h2>
 
-        <button onclick="nextPage(2)">Biology</button>
-        <button onclick="nextPage(2)">Chemistry</button>
-        <button onclick="nextPage(2)">Mathematics</button>
-        <button onclick="nextPage(2)">Physics</button>
-        <button onclick="nextPage(2)">Data Science</button>
-    </div>
+<button onclick="saveAnswer('14Feb','Busy')">Busy</button>
+<button onclick="saveAnswer('14Feb','With Friends')">Doing things with friends</button>
+<button onclick="saveAnswer('14Feb','Gaming')">Playing</button>
+<button onclick="saveAnswer('14Feb','Trip')">Going out on a trip</button>
+</div>
 </div>
 
-<!-- PAGE 2 -->
+<!-- Q2 -->
 <div id="page2" class="page">
-    <div class="card">
-        <h2>Do you enjoy solving complex real-world problems?</h2>
+<div class="card">
+<h2>Do you know who Swaraj is?</h2>
 
-        <button onclick="nextPage(3)">Strongly Agree</button>
-        <button onclick="nextPage(3)">Agree</button>
-        <button onclick="nextPage(3)">Neutral</button>
-        <button onclick="nextPage(3)">Disagree</button>
-    </div>
+<button onclick="saveAnswer('KnowSwaraj','Yes')">Yes</button>
+<button onclick="saveAnswer('KnowSwaraj','No')">No</button>
+</div>
 </div>
 
-<!-- PAGE 3 -->
+<!-- Q3 -->
 <div id="page3" class="page">
-    <div class="card">
-        <h2>Are you open to participating in exclusive academic events this semester?</h2>
+<div class="card">
+<h2>What do you think about him?</h2>
 
-        <button onclick="nextPage(4)">Yes</button>
-        <button onclick="nextPage(4)">Maybe</button>
-        <button onclick="nextPage(4)">Depends on the event</button>
-    </div>
+<button onclick="saveAnswer('Opinion','Very Good')">Very Good</button>
+<button onclick="saveAnswer('Opinion','Good')">Good</button>
+<button onclick="saveAnswer('Opinion','Average')">Average</button>
+<button onclick="saveAnswer('Opinion','Bad')">Bad</button>
+</div>
 </div>
 
-<!-- PAGE 4 -->
+<!-- Q4 -->
 <div id="page4" class="page">
-    <div class="card">
-        <h2>How was your Valentine’s week?</h2>
+<div class="card">
+<h2>Do you want him back in your life?</h2>
 
-        <button onclick="nextPage(5)">Amazing</button>
-        <button onclick="nextPage(5)">Pretty Good</button>
-        <button onclick="nextPage(5)">It was normal</button>
-        <button onclick="nextPage(5)">Could have been better</button>
-    </div>
+<button onclick="yesPath()">Yes</button>
+<button onclick="noPath()">No</button>
+</div>
 </div>
 
-<!-- PAGE 5 -->
-<div id="page5" class="page">
-    <div class="card">
-        <h2>Are you currently in a committed relationship?</h2>
+<!-- QUIZ PAGE -->
+<div id="quizPage" class="page">
+<div class="card">
+<h2>You have a task:</h2>
+<p>Guess 10 things about Swaraj.</p>
 
-        <button onclick="nextPage(6)">Yes</button>
-        <button onclick="nextPage(6)">No</button>
-        <button onclick="nextPage(6)">It's complicated</button>
-    </div>
+<p>1. His favorite color?</p>
+<button onclick="checkAnswer(this,true)">Black</button>
+<button onclick="checkAnswer(this,false)">Red</button>
+
+<p>2. Prefers coffee or tea?</p>
+<button onclick="checkAnswer(this,true)">Coffee</button>
+<button onclick="checkAnswer(this,false)">Tea</button>
+
+<p>3. Introvert or extrovert?</p>
+<button onclick="checkAnswer(this,true)">Introvert</button>
+<button onclick="checkAnswer(this,false)">Extrovert</button>
+
+<p>4. Loves coding?</p>
+<button onclick="checkAnswer(this,true)">Yes</button>
+<button onclick="checkAnswer(this,false)">No</button>
+
+<p>5. Romantic?</p>
+<button onclick="checkAnswer(this,true)">Yes</button>
+<button onclick="checkAnswer(this,false)">No</button>
+
+<br><br>
+<button onclick="finishQuiz()">Submit Answers</button>
+</div>
 </div>
 
-<!-- PAGE 6 -->
-<div id="page6" class="page">
-    <div class="card">
-        <h2>Human Verification Required</h2>
+<!-- WIN PAGE -->
+<div id="winPage" class="page">
+<div class="card">
+<h2>You Won 🎉</h2>
+<p>Your reward is waiting for you...</p>
+<button onclick="alert('Final Reveal Coming Soon 😏')">Click To Know</button>
+</div>
+</div>
 
-        <button onclick="alert('Verification successful. Proceeding to evaluation stage...')">
-            I Confirm I Am Human
-        </button>
-    </div>
+<!-- LOSE PAGE -->
+<div id="losePage" class="page">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517849845537-4d257902454a">
+<h2>Better Luck Next Time ❤️</h2>
+<p>– Swaraj</p>
+</div>
 </div>
 
 <script>
-function nextPage(pageNumber) {
-    var pages = document.getElementsByClassName("page");
-    for (var i = 0; i < pages.length; i++) {
+
+let score = 0;
+
+function saveAnswer(question, answer){
+    localStorage.setItem(question, answer);
+    nextPage();
+}
+
+function yesPath(){
+    localStorage.setItem('WantBack','Yes');
+    showPage('quizPage');
+}
+
+function noPath(){
+    localStorage.setItem('WantBack','No');
+    showPage('losePage');
+}
+
+function checkAnswer(button, correct){
+    if(correct){
+        score++;
+        button.style.background = "green";
+    } else {
+        button.style.background = "red";
+    }
+}
+
+function finishQuiz(){
+    if(score >= 4){   // since we made 5 questions (adjust later to 8/10)
+        showPage('winPage');
+    } else {
+        showPage('losePage');
+    }
+}
+
+function nextPage(){
+    let pages = document.getElementsByClassName("page");
+    for(let i=0;i<pages.length;i++){
+        if(pages[i].classList.contains("active")){
+            pages[i].classList.remove("active");
+            pages[i+1].classList.add("active");
+            break;
+        }
+    }
+}
+
+function showPage(id){
+    let pages = document.getElementsByClassName("page");
+    for(let i=0;i<pages.length;i++){
         pages[i].classList.remove("active");
     }
-    document.getElementById("page" + pageNumber).classList.add("active");
+    document.getElementById(id).classList.add("active");
 }
+
 </script>
 
 </body>
