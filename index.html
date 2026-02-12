@@ -150,48 +150,57 @@ img {
 </div>
 </div>
 
-<!-- QUIZ PAGE -->
-<div id="quizPage" class="page">
+<!-- LOADING PAGE -->
+<div id="loadingPage" class="page">
 <div class="card">
-<h2>You have a task:</h2>
-<p>Guess 5 things about Swaraj.</p>
-
-<p>1. Favorite color?</p>
-<button onclick="checkAnswer(true)">Black</button>
-<button onclick="checkAnswer(false)">Red</button>
-
-<p>2. Prefers coffee?</p>
-<button onclick="checkAnswer(true)">Yes</button>
-<button onclick="checkAnswer(false)">No</button>
-
-<p>3. Loves coding?</p>
-<button onclick="checkAnswer(true)">Yes</button>
-<button onclick="checkAnswer(false)">No</button>
-
-<br><br>
-<button onclick="finishQuiz()">Submit</button>
+<h2>Processing Your Responses...</h2>
+<p>Please wait while we evaluate compatibility.</p>
+<h3 id="countdown">3</h3>
 </div>
 </div>
 
-<!-- WIN PAGE -->
-<div id="winPage" class="page">
+
+
+<!-- FINAL REVEAL PAGE -->
+<div id="finalRevealPage" class="page">
 <div class="card">
-<h2>You Won 🎉</h2>
-<p>Your reward is waiting for you...</p>
-<button onclick="alert('Final Reveal Coming Soon 😏')">Click To Know</button>
+<h2>Final Evaluation Result 💖</h2>
+<p>After careful analysis...</p>
+
+<h1 style="margin-top:40px;">So…</h1>
+<h2>Will you be my Valentine</h2>
+<h2>and come with me to Prom? 💕</h2>
+
+<button style="margin-top:30px;" onclick="alert('Best Decision Ever 😌💖')">
+YES 💕
+</button>
+
+<button onclick="alert('Wrong answer 😏 Try again.')">
+No
+</button>
+
 </div>
 </div>
 
-<!-- LOSE PAGE -->
-<div id="losePage" class="page">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1517849845537-4d257902454a">
-<h2>Better Luck Next Time ❤️</h2>
-<p>– Swaraj</p>
-</div>
-</div>
 
 <script>
+    function startReveal(){
+    showPage("loadingPage");
+
+    let timeLeft = 3;
+    let countdown = document.getElementById("countdown");
+
+    let timer = setInterval(function(){
+        timeLeft--;
+        countdown.innerText = timeLeft;
+
+        if(timeLeft <= 0){
+            clearInterval(timer);
+            showPage("finalRevealPage");
+        }
+    },1000);
+}
+
 
 let score = 0;
 
